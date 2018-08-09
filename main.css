@@ -1,0 +1,13 @@
+.strong{
+    color: red;
+    font-size: 30px;
+}
+
+img{
+    opacity: 1;
+    transition: opacity 5s;
+}
+
+img.hide{
+    opacity: 0;
+}
