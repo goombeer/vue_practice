@@ -1,24 +1,15 @@
 var app = new Vue({
     el: '#app',
     data:{
-        show:true,
-        message:'Hello',
-        val:[]
-    },
-    watch:{
-        val: function(newVal, oldVal){
-        console.log(this.val);
-        console.log(newVal);
-        console.log(oldVal);
-      }
+        preview:''
     },
     methods:{
-        handle:function(event){
-            this.message = event.target.value
-            console.log(this.message);
-        },
-        handler:function(comment){
-          console.log(comment);
+        handleChange:function(event){
+            console.log(event.target.files[0].type);
+            let file = event.target.files[0];
+            if (file && file.type.match(/^image\/(png|jpeg)$/)){
+                this.preview = window.URL.createObjectURL(file);
+            }
         }
     }
 })

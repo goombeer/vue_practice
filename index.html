@@ -7,12 +7,8 @@
 </head>
 <body>
   <div id="app">
-    <select  v-model="val" multiple>
-      <option value="a">A</option>
-      <option value="b">B</option>
-      <option value="c">C</option>
-    </select>
-    {{ val }}
+   <input type="file" v-on:change="handleChange">
+   <div v-if="preview"><img v-bind:src="preview"></div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
