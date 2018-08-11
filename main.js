@@ -1,33 +1,13 @@
+var scroll = new SmoothScroll()
 var app = new Vue({
     el: '#app',
     data:{
        scrollY:0,
        timer:null
     },
-    created:function(){
-        window.addEventListener('scroll',this.handleScroll)
-    },
-    watch:{
-        scrollY:function(){
-            if(this.scrollY > 200){
-                $("#main").css('background','red');
-            } else{
-                $("#main").css('background','white');
-            }
-        }
-     },
-    beforeDestroy:function(){
-        window.removeEventListener('scroll',this.handleScroll)
-    },
     methods:{
-        handleScroll:function(event){
-            if(this.timer === null){
-                this.timer = setTimeout(function(){
-                    this.scrollY = window.scrollY
-                    clearTimeout(this.timer)
-                    this.timer = null
-                }.bind(this),2000)
-            }
+        scrollTop:function(event){
+            scroll.animateScroll(0)
         }
     }
 })
