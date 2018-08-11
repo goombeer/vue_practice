@@ -5,13 +5,18 @@
   <title>Vue.js App</title>
   <link href="main.css" rel="stylesheet">
 </head>
-<body>
+<body id="main">
   <div id="app">
-   <input type="file" v-on:change="handleChange">
-   <div v-if="preview"><img v-bind:src="preview"></div>
+   <header v-bind:class="{ compact: scrollY > 200 }">
+      200pxより下にスクロールしたら.compact を付与
+   </header>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 </html>

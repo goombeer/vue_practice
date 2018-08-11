@@ -1,3 +1,7 @@
+body{
+    height: 3000px;
+}
+
 .strong{
     color: red;
     font-size: 30px;
@@ -11,3 +15,4 @@ img{
 img.hide{
     opacity: 0;
 }
+

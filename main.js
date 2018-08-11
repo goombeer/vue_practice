@@ -1,14 +1,32 @@
 var app = new Vue({
     el: '#app',
     data:{
-        preview:''
+       scrollY:0,
+       timer:null
+    },
+    created:function(){
+        window.addEventListener('scroll',this.handleScroll)
+    },
+    watch:{
+        scrollY:function(){
+            if(this.scrollY > 200){
+                $("#main").css('background','red');
+            } else{
+                $("#main").css('background','white');
+            }
+        }
+     },
+    beforeDestroy:function(){
+        window.removeEventListener('scroll',this.handleScroll)
     },
     methods:{
-        handleChange:function(event){
-            console.log(event.target.files[0].type);
-            let file = event.target.files[0];
-            if (file && file.type.match(/^image\/(png|jpeg)$/)){
-                this.preview = window.URL.createObjectURL(file);
+        handleScroll:function(event){
+            if(this.timer === null){
+                this.timer = setTimeout(function(){
+                    this.scrollY = window.scrollY
+                    clearTimeout(this.timer)
+                    this.timer = null
+                }.bind(this),2000)
             }
         }
     }
